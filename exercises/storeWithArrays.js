@@ -9,12 +9,7 @@ let process = require('process');
 */
 
 // --- DELETE THE LINES STARTING HERE ---
-let removeThisToStart = true;
 
-if (removeThisToStart) {
-  console.log('Hey! Open up storeWithArrays.js to see how to get started.');
-  process.exit();
-}
 
 // --- DELETE THE LINES ENDING HERE ---
 
@@ -48,8 +43,15 @@ function newSofa(name, price) {
  * and `false` otherwise.
  */
 function userCanAffordSofa(user, sofa) {
-  // This is your job. :)
+  if (user[2] > sofa[1]) {
+    return true
+  }
+  else {false}
 }
+
+
+
+
 
 let allUsers = [
   newUser('Alyssa', 'Morris', 1800.00),
@@ -71,12 +73,14 @@ for (let user of allUsers) {
   if (userCanAffordSofa(user, sofa)) {
     console.log('Congratulations!');
     console.log(`A ${sofa[0]} costs ${sofa[1]}, which is within your budget of ${user[2]}!`);
+    console.log(`We will be emailing you at ${user[0][0]}${user[1]}@example.com.`)
   } else {
     console.log(`Sorry, ${user[0]}, but you can't afford a ${sofa[0]}.`);
     console.log(`Your budget is ${user[2]}, but a ${sofa[0]} costs ${sofa[1]}.`);
   }
 
   console.log();
+
 }
 
 console.log('--------------------');
