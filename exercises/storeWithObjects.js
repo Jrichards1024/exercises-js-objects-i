@@ -9,24 +9,20 @@ let process = require('process');
 */
 
 // --- DELETE THE LINES STARTING HERE ---
-let removeThisToStart = true;
 
-if (removeThisToStart) {
-  console.log('Hey! Open up storeWithObjects.js to see how to get started.');
-  process.exit();
-}
 
 // --- DELETE THE LINES ENDING HERE ---
 
 /**
  * Creates and returns a new user (as an object).
  */
-function newUser(firstName, lastName, budget) {
-  let user = [];
+function newUser(firstName, lastName, budget, emailaddress) {
+  let user = {};
 
   user['firstName'] = firstName;
   user['lastName'] = lastName;
   user['budget'] = budget;
+  user['email'] = emailaddress
 
   return user;
 }
@@ -35,7 +31,7 @@ function newUser(firstName, lastName, budget) {
  * Creates and returns a new sofa (as an object).
  */
 function newSofa(name, price) {
-  let sofa = [];
+  let sofa = {};
 
   sofa['name'] = name;
   sofa['price'] = price;
@@ -48,16 +44,14 @@ function newSofa(name, price) {
  * and `false` otherwise.
  */
 function userCanAffordSofa(user, sofa) {
-  // This is your job. :)
-
   return user['budget'] >= sofa['price'];
 }
 
 let allUsers = [
-  newUser('Alyssa', 'Morris', 1800.00),
-  newUser('Mindy', 'Weaver', 200.00),
-  newUser('Louis', 'Washington', 850.00),
-  newUser('Kevin', 'Isaacs', 80.00),
+  newUser('Alyssa', 'Morris', 1800.00, 'alyssamorris@example.com'),
+  newUser('Mindy', 'Weaver', 200.00, 'mindyweaver@example.com'),
+  newUser('Louis', 'Washington', 850.00, 'louiswashington@example.com'),
+  newUser('Kevin', 'Isaacs', 80.00, 'kevinisaacs@example.com'),
 ];
 
 let sofa = newSofa('Nice Sofa', 800.00);
@@ -74,6 +68,7 @@ for (let user of allUsers) {
   if (userCanAffordSofa(user, sofa)) {
     console.log('Congratulations!');
     console.log(`A ${sofa['name']} costs ${sofa['price']}, which is within your budget of ${user['budget']}!`);
+    console.log(`We will be emailing you at ${user.emailaddress}`)
   } else {
     console.log(`Sorry, ${user['firstName']}, but you can't afford a ${sofa['name']}.`);
     console.log(`Your budget is ${user['budget']}, but a ${sofa['name']} costs ${sofa['price']}.`);
